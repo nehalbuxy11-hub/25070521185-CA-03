@@ -14,7 +14,7 @@ if (!$mongoExecutable) { throw 'Install MongoDB Community Server and put mongod 
 $databaseDirectory = Join-Path $projectRoot 'work\db'
 New-Item -ItemType Directory -Force -Path $databaseDirectory | Out-Null
 $logFile = Join-Path $projectRoot 'work\mongodb.log'
-$arguments = @('--dbpath', ('"' + $databaseDirectory + '"'), '--bind_ip', '127.0.0.1', '--port', '27017', '--logpath', ('"' + $logFile + '"'), '--logappend')
+$arguments = @('--dbpath', $databaseDirectory, '--bind_ip', '127.0.0.1', '--port', '27017', '--logpath', $logFile, '--logappend')
 $mongoProcess = Start-Process -FilePath $mongoExecutable -ArgumentList $arguments -WindowStyle Hidden -PassThru
 $mongoProcess.Id | Set-Content -LiteralPath (Join-Path $projectRoot 'work\mongodb.pid')
 Write-Output "MongoDB started locally (PID $($mongoProcess.Id)). Data: $databaseDirectory"

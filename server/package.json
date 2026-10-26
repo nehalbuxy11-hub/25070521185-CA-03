@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --watch server.js",
+    "dev": "node --watch --watch-path=src --watch-path=server.js server.js",
     "start": "node server.js",
     "test": "node --test tests/algorithms.test.js tests/validation.test.js",
     "test:integration": "node --test tests/integration.test.js"
